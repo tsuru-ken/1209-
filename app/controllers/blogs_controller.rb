@@ -32,6 +32,12 @@ class BlogsController < ApplicationController
         format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
+
+    def confirm
+      @blog = Blog.new(blog_params)
+      binding.pry  #ここに追記
+      render :new if @blog.invalid?
+    end
   end
 
   # PATCH/PUT /blogs/1 or /blogs/1.json
